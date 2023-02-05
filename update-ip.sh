@@ -5,16 +5,14 @@
 source auth.sh
 HOST="hostname.network"
 
-# Get IP
-#IP=$( dig +short myip.opendns.com @resolver1.opendns.com )
 CUR_IP=$(curl -s "https://domains.google.com/checkip")
-CUR_IP="0.0.0.0"
+#CUR_IP="0.0.0.0"
 REG_IP=$(nslookup hostname.network | grep Address: | grep -v 192.168 | cut -d' ' -f2)
 
 if [ "$CUR_IP" != "$REG_IP" ]; then
-    echo "mismatch"
+    echo "Mismatch. Updating DNS record from $REG_IP to $CUR_IP"
 else
-    echo "match"
+    echo "Match. Record has $REG_IP and current IP is $CUR_IP"
 fi
 
 # Update DNS Record
