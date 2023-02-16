@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source auth.sh
+source PATH/TO/FILE/auth.sh
 HOST="YOUR_HOSTNAME"
 
 date
